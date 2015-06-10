@@ -1,0 +1,39 @@
+---
+
+## TODO: Remove redundancy?
+
+- name: Import my PGP keys (global)
+  command: gpg --recv-keys {{ item.value | join(" ") }}
+  changed_when: (
+                 "imported:" in import_gpg_keys_gpg_cmd.stderr or
+                 "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
+                 "new signatures:" in import_gpg_keys_gpg_cmd.stderr
+                )
+  register: import_gpg_keys_gpg_cmd
+  sudo: yes
+  sudo_user: "{{ item.key }}"
+  with_dict: import_gpg_keys
+
+- name: Import my PGP keys (group)
+  command: gpg --recv-keys {{ item.value | join(" ") }}
+  changed_when: (
+                 "imported:" in import_gpg_keys_gpg_cmd.stderr or
+                 "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
+                 "new signatures:" in import_gpg_keys_gpg_cmd.stderr
+                )
+  register: import_gpg_keys_gpg_cmd
+  sudo: yes
+  sudo_user: "{{ item.key }}"
+  with_dict: import_gpg_keys_group
+
+- name: Import my PGP keys (host)
+  command: gpg --recv-keys {{ item.value | join(" ") }}
+  changed_when: (
+                 "imported:" in import_gpg_keys_gpg_cmd.stderr or
+                 "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
+                 "new signatures:" in import_gpg_keys_gpg_cmd.stderr
+                )
+  register: import_gpg_keys_gpg_cmd
+  sudo: yes
+  sudo_user: "{{ item.key }}"
+  with_dict: import_gpg_keys_host
