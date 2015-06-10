@@ -1,9 +1,17 @@
 ---
 
+## gpg: directory `/root/.gnupg' created
+## gpg: new configuration file `/root/.gnupg/gpg.conf' created
+## gpg: WARNING: options in `/root/.gnupg/gpg.conf' are not yet active during this run
+## gpg: keyring `/root/.gnupg/pubring.gpg' created
+## gpg: /root/.gnupg/trustdb.gpg: trustdb created
+# - name: Make sure .gnupg/gpg.conf exists to avoid failure
+# Use gpg --list-config as a workaround.
+
 ## TODO: Remove redundancy?
 
 - name: Import my PGP keys (global)
-  command: gpg --recv-keys {{ item.value | join(" ") }}
+  shell: gpg --list-config && gpg --recv-keys {{ item.value | join(" ") }}
   changed_when: (
                  "imported:" in import_gpg_keys_gpg_cmd.stderr or
                  "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
@@ -15,7 +23,7 @@
   with_dict: import_gpg_keys
 
 - name: Import my PGP keys (group)
-  command: gpg --recv-keys {{ item.value | join(" ") }}
+  shell: gpg --list-config && gpg --recv-keys {{ item.value | join(" ") }}
   changed_when: (
                  "imported:" in import_gpg_keys_gpg_cmd.stderr or
                  "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
@@ -27,7 +35,7 @@
   with_dict: import_gpg_keys_group
 
 - name: Import my PGP keys (host)
-  command: gpg --recv-keys {{ item.value | join(" ") }}
+  shell: gpg --list-config && gpg --recv-keys {{ item.value | join(" ") }}
   changed_when: (
                  "imported:" in import_gpg_keys_gpg_cmd.stderr or
                  "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
