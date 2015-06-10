@@ -1,11 +1,24 @@
 ## import_pgp_public_keys
 
 [![Travis CI](http://img.shields.io/travis/ypid/ansible-import_pgp_public_keys.svg?style=flat)](http://travis-ci.org/ypid/ansible-import_pgp_public_keys)
+[![Ansible Galaxy](http://img.shields.io/badge/galaxy-ypid.import_pgp_public_keys-660198.svg?style=flat)](https://galaxy.ansible.com/list#/roles/4109)
+[![Platforms](http://img.shields.io/badge/platforms-debian%20/%20ubuntu-lightgrey.svg?style=flat)](#)
 
 
 Simple role to import OpenPGP public keys by fingerprint.
 
 Depends on `gpg` being installed which should be the default for all current linux distributions.
+
+### Installation
+
+This role requires at least Ansible `v1.3`. To install it, run:
+
+    ansible-galaxy install ypid.import_pgp_public_keys
+
+To install via git, run either:
+
+    git clone https://github.com/ypid/ansible-import_pgp_public_keys.git ypid.import_pgp_public_keys
+    git submodule add https://github.com/ypid/ansible-import_pgp_public_keys.git roles/ypid.import_pgp_public_keys
 
 
 
