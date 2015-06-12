@@ -1,10 +1,10 @@
 ---
 
-import_gpg_keys:
+import_pgp_keys:
   root:
     - EF96BC32AC57CFC72DF01D8C489A4D5EC353C98A
     - EDE1371D1B87D28DA5E8051586FD980BBF1A40F8
     - C505B5C93B0DB3D338A1B6005FE92C12EE88E1F0
 
-import_gpg_keys_group: {}
-import_gpg_keys_host: {}
+import_pgp_keys_group: {}
+import_pgp_keys_host: {}
