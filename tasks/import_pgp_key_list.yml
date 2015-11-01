@@ -8,14 +8,16 @@
 # - name: Make sure .gnupg/gpg.conf exists to avoid failure
 # Use gpg --list-config as a workaround.
 
+## Might use https://github.com/bgw/ansible-playbooks/blob/master/library/gpg_key
+
 - name: Import PGP keys
-  shell: gpg --list-config && gpg --recv-keys {{ item.value | join(" ") }}
+  shell: gpg --list-config && gpg --recv-keys "{{ item.value if (item.value is string) else (item.value | join(" ")) }}"
   changed_when: (
                  "imported:" in import_gpg_keys_gpg_cmd.stderr or
                  "new subkeys:" in import_gpg_keys_gpg_cmd.stderr or
                  "new signatures:" in import_gpg_keys_gpg_cmd.stderr
                 )
   register: import_gpg_keys_gpg_cmd
-  sudo: yes
-  sudo_user: "{{ item.key }}"
+  become: yes
+  become_user: "{{ item.key }}"
   with_dict: pgp_keys

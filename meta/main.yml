@@ -1,26 +1,29 @@
 ---
 
-galaxy_info:
-  author: Robin Schneider
-  description: Simple role to import OpenPGP public keys by fingerprint.
-  license: AGPLv3
-  platforms:
-  - name: Debian
-    versions:
-      - all
-  - name: Ubuntu
-    versions:
-      - all
-  categories:
-    - system
-  min_ansible_version: 1.3
 dependencies: []
-ansigenome_info:
-  github_url: "https://github.com/ypid/ansible-import_pgp_public_keys"
-  git_branch: "master"
-  galaxy_id: "4109"
 
-  travis: True
+galaxy_info:
 
-  synopsis: |
-    Depends on `gpg` being installed which should be the default for all current linux distributions.
+  author: 'Robin Schneider'
+  description: 'Simple role to import OpenPGP public keys by key fingerprint.'
+  license: 'GNU Affero General Public License v3'
+
+  min_ansible_version: '1.3'
+
+  platforms:
+
+    - name: Debian
+      versions:
+        - all
+
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - system
+    - encryption
+    - security
+    - gpg
+    - pgp
+    - public-key
