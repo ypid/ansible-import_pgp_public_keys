@@ -10,7 +10,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/ypid/ansible-import_pgp_public_keys.svg)](https://github.com/ypid/ansible-import_pgp_public_keys)
 
 
-Simple role to import OpenPGP public keys by fingerprint.
+Simple role to import OpenPGP public keys by key fingerprint.
 
 Depends on `gpg` being installed which should be the default for all current Linux distributions.
 
@@ -54,6 +54,7 @@ import_pgp_keys_host: {}
 ### Authors and license
 
 `import_pgp_public_keys` role was written by:
+
 - [Robin Schneider](http://ypid.de/) | [e-mail](mailto:ypid@riseup.net) | [Twitter](https://twitter.com/ypid) | [GitHub](https://github.com/ypid)
 
 License: [AGPLv3](https://tldrlegal.com/license/gnu-affero-general-public-license-v3-%28agpl-3.0%29)
